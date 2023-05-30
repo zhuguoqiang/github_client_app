@@ -2,8 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:github_client_app/common/Global.dart';
+import 'package:github_client_app/routers/home_page.dart';
 
 void main() {
+  ;
   Global.init().then((e) => runApp(const MyApp()));
 }
 
@@ -27,7 +29,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: HomeRoute(),
     );
   }
 }
@@ -99,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'You had click the button this many times:',
             ),
             Text(
               '$_counter',
