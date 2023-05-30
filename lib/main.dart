@@ -1,11 +1,13 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:github_client_app/common/Global.dart';
+import 'package:github_client_app/models/locale_model.dart';
+import 'package:github_client_app/models/theme_model.dart';
+import 'package:github_client_app/models/user_model.dart';
 import 'package:github_client_app/routers/home_page.dart';
+import 'package:github_client_app/routers/login_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  ;
   Global.init().then((e) => runApp(const MyApp()));
 }
 
@@ -15,6 +17,27 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeModel()),
+        ChangeNotifierProvider(create: (_) => UserModel()),
+        ChangeNotifierProvider(create: (_) => LocaleModel()),
+      ],
+      child: Consumer2<ThemeModel, LocaleModel>(
+        builder: (context, themeModel, localModel, child) {
+          return MaterialApp(
+            theme: ThemeData(
+                // primarySwatch: themeModel.theme,
+                ),
+            home: HomeRoute(),
+            routes: <String, WidgetBuilder>{
+              "login": (context) => LoginRoute(),
+            },
+          );
+        },
+      ),
+    );
+    /** 
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -32,6 +55,7 @@ class MyApp extends StatelessWidget {
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
       home: HomeRoute(),
     );
+    */
   }
 }
 
