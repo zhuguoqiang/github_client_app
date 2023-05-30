@@ -2,7 +2,7 @@ import 'package:github_client_app/models/profile_change_notifier.dart';
 import 'package:github_client_app/models/index.dart';
 
 class UserModel extends ProfileChangeNotifier {
-  User get user => profile.user;
+  User get user => profile.user!;
 
   // APP 是否登录
   bool get isLogin => user != null;

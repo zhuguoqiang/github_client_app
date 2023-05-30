@@ -3,7 +3,7 @@ import 'package:github_client_app/models/profile_change_notifier.dart';
 
 class LocaleModel extends ProfileChangeNotifier {
   // 获取当前用户的APP语言配置Locale类，如果为null，则语言跟随系统语言
-  Locale getLocale() {
+  Locale? getLocale() {
     if (profile.locale == null) return null;
     var t = profile.locale?.split("_");
     return Locale(t![0], t![1]);
