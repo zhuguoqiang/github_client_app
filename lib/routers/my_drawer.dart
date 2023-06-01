@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:github_client_app/common/gm_avatar.dart';
 import 'package:github_client_app/models/user_model.dart';
 import 'package:provider/provider.dart';
 
@@ -28,14 +29,16 @@ class MyDrawer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: ClipOval(
-                  child: Image.asset(
-                    "imgs/avatoar_default.png",
-                    width: 80,
-                  ),
+                  child: value.isLogin
+                      ? gmAvatar(value.user!.avatar_url, width: 80)
+                      : Image.asset(
+                          "imgs/avatar_default.png",
+                          width: 80,
+                        ),
                 ),
               ),
               Text(
-                "登录",
+                value.isLogin ? value.user!.login : "登录",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
