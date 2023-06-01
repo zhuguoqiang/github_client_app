@@ -32,7 +32,7 @@ class MyDrawer extends StatelessWidget {
                   child: value.isLogin
                       ? gmAvatar(value.user!.avatar_url, width: 80)
                       : Image.asset(
-                          "imgs/avatar_default.png",
+                          "imgs/avatoar_default.png",
                           width: 80,
                         ),
                 ),
