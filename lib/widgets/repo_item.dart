@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:github_client_app/common/gm_avatar.dart';
 import 'package:github_client_app/models/index.dart';
 
 class RepoItem extends StatefulWidget {
@@ -30,9 +31,11 @@ class _RepoItemState extends State<RepoItem> {
               children: <Widget>[
                 ListTile(
                   dense: true,
-                  // leading: gmAvatar(
-                  //   // 项目owner头像
-                  // ),
+                  leading: gmAvatar(
+                      // 项目owner头像
+                      widget.repo.owner.avatar_url,
+                      width: 24.0,
+                      borderRadius: BorderRadius.circular(12)),
                   title: Text(
                     widget.repo.owner.login,
                     textScaleFactor: .9,
@@ -88,6 +91,43 @@ class _RepoItemState extends State<RepoItem> {
   }
 
   Widget _buildBottom() {
-    return Text("--");
+    const paddingWidth = 10;
+    return IconTheme(
+        data: IconThemeData(color: Colors.grey, size: 15),
+        child: DefaultTextStyle(
+          style: TextStyle(color: Colors.grey, fontSize: 12),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Builder(
+              builder: (context) {
+                var children = <Widget>[
+                  Icon(Icons.star),
+                  Text("  " +
+                      widget.repo.stargazers_count
+                          .toString()
+                          .padRight(paddingWidth)),
+                  Icon(Icons.fork_left),
+                  Text(
+                      widget.repo.forks_count.toString().padRight(paddingWidth))
+                ];
+
+                if (widget.repo.fork) {
+                  children.add(Text("Forked".padRight(paddingWidth)));
+                }
+
+                if (widget.repo.private == true) {
+                  children.addAll(<Widget>[
+                    Icon(Icons.lock),
+                    Text("private".padRight(paddingWidth))
+                  ]);
+                }
+
+                return Row(
+                  children: children,
+                );
+              },
+            ),
+          ),
+        ));
   }
 }
