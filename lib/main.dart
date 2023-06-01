@@ -4,7 +4,9 @@ import 'package:github_client_app/models/locale_model.dart';
 import 'package:github_client_app/models/theme_model.dart';
 import 'package:github_client_app/models/user_model.dart';
 import 'package:github_client_app/routers/home_page.dart';
+import 'package:github_client_app/routers/language_page.dart';
 import 'package:github_client_app/routers/login_page.dart';
+import 'package:github_client_app/routers/theme_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -32,6 +34,8 @@ class MyApp extends StatelessWidget {
             home: HomeRoute(),
             routes: <String, WidgetBuilder>{
               "login": (context) => LoginRoute(),
+              "language": (context) => LanguageRoute(),
+              "themes": (context) => ThemeChangeRoute()
             },
           );
         },
