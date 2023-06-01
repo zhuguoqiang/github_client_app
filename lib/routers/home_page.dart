@@ -86,9 +86,11 @@ class _HomeRouteState extends State<HomeRoute> {
     //如果返回的数据小于指定的条数，则表示没有更多数据，反之则否
     hasMore = data.length > 0 && data.length % 20 == 0;
     // 把请求的数据添加到items中
-    setState(() {
-      _items.insertAll(_items.length - 1, data);
-      page++;
-    });
+    if (this.mounted) {
+      setState(() {
+        _items.insertAll(_items.length - 1, data);
+        page++;
+      });
+    }
   }
 }

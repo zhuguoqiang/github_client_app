@@ -111,7 +111,8 @@ class _LoginRouteState extends State<LoginRoute> {
           // showToast(e.toString());
         }
       } finally {
-        Navigator.of(context).pop();
+        // 隐藏loading框
+        // Navigator.of(context).pop();
       }
 
       if (user != null) {

@@ -70,6 +70,32 @@ class MyDrawer extends StatelessWidget {
               title: Text("语言"),
               onTap: () => Navigator.pushNamed(context, "language"),
             ),
+            if (userModel.isLogin)
+              ListTile(
+                leading: const Icon(Icons.power_settings_new),
+                title: Text("注销登录"),
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (ctx) {
+                        // 推出账号，二次确认弹窗
+                        return AlertDialog(
+                          content: Text("确认退出登录？"),
+                          actions: <Widget>[
+                            TextButton(
+                                onPressed: () => Navigator.pop(context),
+                                child: Text("取消")),
+                            TextButton(
+                                onPressed: () {
+                                  userModel.user = null;
+                                  Navigator.pop(context);
+                                },
+                                child: Text("确认"))
+                          ],
+                        );
+                      });
+                },
+              )
           ],
         );
       },
