@@ -10,10 +10,10 @@ class LocaleModel extends ProfileChangeNotifier {
   }
 
   // 获取当前Locale的字符串
-  String get locale => profile.locale!;
+  String? get locale => profile.locale;
 
   // 用户改变App语言后，通知依赖项更新
-  set locale(String locale) {
+  set locale(String? locale) {
     if (locale != profile.locale) {
       profile.locale = locale;
       notifyListeners();
