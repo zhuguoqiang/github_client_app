@@ -12,7 +12,7 @@ class Repo {
   late User owner;
   Repo? parent;
   late bool private;
-  late String description;
+  late String? description;
   late bool fork;
   String? language;
   late num forks_count;
@@ -24,8 +24,8 @@ class Repo {
   late String created_at;
   late String updated_at;
   num? subscribers_count;
-  Map<String,dynamic>? license;
-  
-  factory Repo.fromJson(Map<String,dynamic> json) => _$RepoFromJson(json);
+  Map<String, dynamic>? license;
+
+  factory Repo.fromJson(Map<String, dynamic> json) => _$RepoFromJson(json);
   Map<String, dynamic> toJson() => _$RepoToJson(this);
 }
